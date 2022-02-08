@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# hide raw data
+*.txt
+
+# hide trained parameters
+param/
+
+# hide idea project files
+.idea/
