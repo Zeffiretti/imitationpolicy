@@ -21,10 +21,11 @@ def train_bc(idx):
     # L1 loss
     criterion = torch.nn.L1Loss().to(device)
     # adam optimizer
-    optimizer = torch.optim.Adam(bc_model.parameters(), lr=0.0001)
+    optimizer = torch.optim.Adam(bc_model.parameters(), lr=0.001)
     # iter loop
     bc_model.train()
-    epochs = 1000
+    epochs = 500
+    log_file = open(r'param/log_{}.txt'.format(idx), 'w')
     for epoch in range(epochs):
         err = 0
         for i, (data_x, data_y) in enumerate(data_loader):
@@ -37,8 +38,10 @@ def train_bc(idx):
             optimizer.step()
             err = err + loss
         print('[idx', idx, 'epoch:', epoch, '],loss:', err.item())
+        log_file.write('[idx{},epoch:{},loss:{}]\n'.format(idx, epoch, err.item()))
 
     torch.save(bc_model.state_dict(), r'param/bc_model_{}.pth'.format(idx))
+    log_file.close()
 
 
 # Press the green button in the gutter to run the script.
