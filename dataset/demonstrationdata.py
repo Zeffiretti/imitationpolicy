@@ -1,5 +1,5 @@
 """
- * File Name : 
+ * File Name : demonstrationdata.py
  * Author    : ZEFFIRETTI, HESH
  * College   : Beijing Institute of Technology
  * E-Mail    : zeffiretti@bit.edu.cn, hiesh@mail.com
@@ -22,7 +22,7 @@ warnings.filterwarnings("ignore")
 plt.ion()  # interactive mode
 
 
-class InteractionData(Dataset, ABC):
+class DemonstrationData(Dataset, ABC):
     """
     InteractionData
     """
@@ -35,11 +35,11 @@ class InteractionData(Dataset, ABC):
         """
         self.raw_data = np.loadtxt(file_path, dtype=np.float32) * 30
         # show raw data shape
-        print("raw data shape: ", self.raw_data.shape)
+        # print("raw data shape: ", self.raw_data.shape)
         # convert raw data to tensor
         self.data = torch.from_numpy(self.raw_data)
         # show data shape
-        print("data shape: ", self.data.shape)
+        # print("data shape: ", self.data.shape)
         self.idx = index
         self.time_scale = time_scale
 
